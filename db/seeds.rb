@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# Airports
+Airport.destroy_all
+
+# Clear the record of unique values returned because unique values ARE limited.
+Faker::Name.unique.clear
+
+100.times do
+  Airport.create!({ code: Faker::Name.unique.initials(number: 3) })
+end
+
+p "Created #{Airport.count} airports"
