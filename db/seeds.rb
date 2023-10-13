@@ -9,3 +9,7 @@ Faker::Name.unique.clear
 end
 
 p "Created #{Airport.count} airports"
+
+
+# Flights
+
