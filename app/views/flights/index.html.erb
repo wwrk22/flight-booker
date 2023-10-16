@@ -14,7 +14,7 @@
   <br/>
 
   <div>
-    <%= flight_form.label :flight_id, "Departure time" %><br/>
+    <%= flight_form.label :flight_id, "Date" %><br/>
     <%= flight_form.select :flight_id, @flights_options %>
   </div>
   <br/>
@@ -22,6 +22,11 @@
   <div>
     <%= flight_form.label :num_passengers, "Number of passengers" %><br/>
     <%= flight_form.select :num_passengers, @num_passengers_options %>
+  </div>
+  <br/>
+
+  <div>
+    <%= flight_form.submit "Search" %>
   </div>
 <% end %>
 
