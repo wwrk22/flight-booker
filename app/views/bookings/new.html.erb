@@ -1,0 +1,28 @@
+<h1>Booking</h1>
+
+<h3><%= "#{@flight.departure_airport.code} to #{@flight.arrival_airport.code} on #{@flight.departure_time}" %></h3>
+
+<div>
+  <%= form_with model: @booking do |booking_form| %>
+    <%= booking_form.hidden_field :flight_id %>
+
+    <div>
+      <%= booking_form.fields_for :passengers do |passenger_form| %>
+        <div>
+          <%= passenger_form.label :name %>
+          <%= passenger_form.text_field :name %>
+        </div>
+
+        <div>
+          <%= passenger_form.label :email %>
+          <%= passenger_form.text_field :email %>
+        </div>
+        <br/>
+      <% end %> 
+    </div>
+
+    <div>
+      <%= booking_form.submit %>
+    </div>
+  <% end %>
+</div>

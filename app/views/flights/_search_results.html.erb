@@ -8,10 +8,15 @@
       <% @flights.each do |flight| %>
         <div>
           <%= booking_form.radio_button :flight_id, flight.id %>
-          <%= booking_form.label :flight_id,
+          <%= booking_form.label "flight_id_#{flight.id}".to_sym,
                 "#{flight.departure_airport.code} to #{flight.arrival_airport.code} - #{flight.departure_time}" %>
         </div>
+        <br/>
       <% end %>
+
+      <div>
+        <%= booking_form.submit "Book flight" %>
+      </div>
     <% end %>
   </div>
 <% end %>
