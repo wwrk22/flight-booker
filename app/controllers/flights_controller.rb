@@ -27,7 +27,8 @@ class FlightsController < ApplicationController
   end
 
   def set_flights
-    @flights =  params[:commit] == "Search" ?
-      Flight.filter(search_flight_params) : Flight.all
+    if params[:commit] == "Search"
+      @flights = Flight.filter(search_flight_params)
+    end
   end
 end
