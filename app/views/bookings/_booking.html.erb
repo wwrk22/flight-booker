@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <p><strong>Flight</strong></p>
+    <%= render partial: booking.flight %>
+  </div>
+  <br/>
+
+  <div>
+    <strong>Passengers</strong>
+    <% booking.passengers.each do |passenger| %>
+      <p><%= passenger.name %> - <%= passenger.email %></p>
+    <% end %>
+  </div>
+</div>

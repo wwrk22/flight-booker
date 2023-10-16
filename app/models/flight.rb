@@ -7,6 +7,7 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport,
              class_name: "Airport",
              inverse_of: :arrival_flights
+  has_many :bookings, inverse_of: :flight
 
   scope :with_departure_airport_id, -> (airport_id) do
     where(departure_airport_id: airport_id)
