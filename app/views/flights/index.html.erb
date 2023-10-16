@@ -1,5 +1,17 @@
 <h1>Search Flights</h1>
 
+<%= form_with url: "/flights", method: :get do |flight_form| %>
+  <div>
+    <%= flight_form.label :flight_id %><br/>
+    <%= flight_form.select(:flight_id, @flight_options) %>
+  </div>
+  <br/>
+
+  <div>
+    <%= flight_form.label :num_passengers %><br/>
+    <%= flight_form.select(:num_passengers, @num_passengers_options) %>
+  </div>
+<% end %>
 
 <h1>Available Flights</h1>
 
