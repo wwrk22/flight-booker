@@ -1,7 +1,7 @@
 class FlightsController < ApplicationController
   include SelectOptions
 
-  before_action :index, :set_flights
+  before_action :index, :set_flight_search_results
 
   def index
     @airports_options = options(Airport.all, :code, :id)
@@ -26,7 +26,7 @@ class FlightsController < ApplicationController
     search_params
   end
 
-  def set_flights
+  def set_flight_search_results
     if params[:commit] == "Search"
       @flights = Flight.filter(search_flight_params)
     end

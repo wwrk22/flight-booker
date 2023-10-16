@@ -1,51 +1,5 @@
 <h1>Search Flights</h1>
 
-<div>
-  <%= form_with url: "/flights", method: :get do |flight_form| %>
-    <div>
-      <%= flight_form.label :departure_airport_id, "Departure" %>
-      <%= flight_form.select :departure_airport_id, @airports_options %>
-    </div>
-    <br/>
+<%= render partial: "search_form" %>
 
-    <div>
-      <%= flight_form.label :arrival_airport_id, "Arrival" %>
-      <%= flight_form.select :arrival_airport_id, @airports_options %>
-    </div>
-    <br/>
-
-    <div>
-      <%= flight_form.label :departure_time, "Date" %><br/>
-      <%= flight_form.select :departure_time, @flights_options %>
-    </div>
-    <br/>
-
-    <div>
-      <%= flight_form.label :num_passengers, "Number of passengers" %><br/>
-      <%= flight_form.select :num_passengers, @num_passengers_options %>
-    </div>
-    <br/>
-
-    <div>
-      <%= flight_form.submit "Search" %>
-    </div>
-  <% end %>
-</div>
-
-<% if not @flights.nil? %>
-  <h1>Available Flights</h1>
-
-  <div>
-    <%= form_with url: "/bookings/new", method: :get do |booking_form| %>
-      <%= booking_form.hidden_field :num_passengers, { value: params[:num_passengers] } %>
-
-      <% @flights.each do |flight| %>
-        <div>
-          <%= booking_form.radio_button :flight_id, flight.id %>
-          <%= booking_form.label :flight_id,
-                "#{flight.departure_airport.code} to #{flight.arrival_airport.code} - #{flight.departure_time}" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+<%= render partial: "search_results" %>
