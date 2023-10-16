@@ -2,14 +2,26 @@
 
 <%= form_with url: "/flights", method: :get do |flight_form| %>
   <div>
-    <%= flight_form.label :flight_id %><br/>
-    <%= flight_form.select(:flight_id, @flight_options) %>
+    <%= flight_form.label :departure_airport_id, "Departure" %>
+    <%= flight_form.select :departure_airport_id, @airports_options %>
   </div>
   <br/>
 
   <div>
-    <%= flight_form.label :num_passengers %><br/>
-    <%= flight_form.select(:num_passengers, @num_passengers_options) %>
+    <%= flight_form.label :arrival_airport_id, "Arrival" %>
+    <%= flight_form.select :arrival_airport_id, @airports_options %>
+  </div>
+  <br/>
+
+  <div>
+    <%= flight_form.label :flight_id, "Departure time" %><br/>
+    <%= flight_form.select :flight_id, @flights_options %>
+  </div>
+  <br/>
+
+  <div>
+    <%= flight_form.label :num_passengers, "Number of passengers" %><br/>
+    <%= flight_form.select :num_passengers, @num_passengers_options %>
   </div>
 <% end %>
 
